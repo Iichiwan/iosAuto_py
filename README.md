@@ -24,16 +24,126 @@ common.py：实现具体的脚本原子能力
 checkui.py：依赖airtest实现ui校验，用于自动化流程中的节点确认
 
 ## javascript
-使用非
+使用[飞冰](https://ice.work/) （一个基于 React 的研发解决方案）搭建
+
 与服务端联通，展示库中已存储脚本，同时提供新增、修改、删除能力
 
 ## java
+使用SpringBoot搭建
+
 提供数据库查询、修改接口，也可在这里实现脚本的定制、修改
 
 ## mysql
+
 存储脚本json
 
-## 脚本json
+脚本json格式
+```
+{
+    "start":[
+        "eatApple",
+        "choose"
+    ],
+    "turn1":[
+        {
+            "action":"skill",
+            "skill":7,
+            "aim":1
+        },
+        {
+            "action":"skill",
+            "skill":8,
+            "aim":0
+        },
+        {
+            "action":"skill",
+            "skill":9,
+            "aim":1
+        },
+        {
+            "action":"suitChange",
+            "a":3,
+            "b":4
+        },
+        {
+            "action":"skill",
+            "skill":1,
+            "aim":0
+        },
+        {
+            "action":"skill",
+            "skill":2,
+            "aim":0
+        },
+        {
+            "action":"skill",
+            "skill":3,
+            "aim":3
+        },
+        {
+            "action":"skill",
+            "skill":4,
+            "aim":0
+        },
+        {
+            "action":"skill",
+            "skill":6,
+            "aim":0
+        },
+        {
+            "action":"cardToNextTurn",
+            "one":-1,
+            "two":1,
+            "three":2
+        }
+    ],
+    "turn2":[
+        {
+            "action":"skill",
+            "skill":5,
+            "aim":0
+        },
+        {
+            "action":"skill",
+            "skill":7,
+            "aim":0
+        },
+        {
+            "action":"cardToNextTurn",
+            "one":-2,
+            "two":1,
+            "three":2
+        }
+    ],
+    "turn3":[
+        {
+            "action":"skill",
+            "skill":8,
+            "aim":1
+        },
+        {
+            "action":"skill",
+            "skill":9,
+            "aim":1
+        },
+        {
+            "action":"suitSkill",
+            "skill":1,
+            "aim":1
+        },
+        {
+            "action":"card",
+            "one":-1,
+            "two":1,
+            "three":2,
+            "wait":10
+        }
+    ],
+    "end":[
+
+    ]
+}
+```
 
 
 # 后续优化
