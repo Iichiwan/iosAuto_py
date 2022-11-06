@@ -4,9 +4,9 @@
 # 简介
 这是一个基于wda的fgo自动化刷本脚本，在iphone12mini设备上试运行
 
-前端操作视频：https://www.bilibili.com/video/BV1zV4y137vf/
+真机运行演示视频：https://www.bilibili.com/video/BV1bg411r7r8/
 
-真机运行视频：https://www.bilibili.com/video/BV1bg411r7r8/
+前端操作演示视频：https://www.bilibili.com/video/BV1zV4y137vf/
 
 前端地址：http://116.62.220.225/#/dash1
 
@@ -23,15 +23,21 @@ common.py：实现具体的脚本原子能力
 
 checkui.py：依赖airtest实现ui校验，用于自动化流程中的节点确认
 
+github库：https://github.com/Iichiwan/iosAuto_py
+
 ## javascript
 使用[飞冰](https://ice.work/) （一个基于 React 的研发解决方案）搭建
 
 与服务端联通，展示库中已存储脚本，同时提供新增、修改、删除能力
 
+github库：https://github.com/Iichiwan/mhr
+
 ## java
 使用SpringBoot搭建
 
 提供数据库查询、修改接口，也可在这里实现脚本的定制、修改
+
+github库：https://github.com/Iichiwan/FgoAuto
 
 ## mysql
 
