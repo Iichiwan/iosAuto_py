@@ -21,7 +21,7 @@ def print_hi(name):
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     # 替换此处id为脚本对应id
-    id = "24";
+    id = "25";
     c = wda.Client('http://localhost:8100')
     url = 'http://116.62.220.225:8080/api/getFgoAuto?id=' + id;
     respose = requests.get(url=url)

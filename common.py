@@ -15,13 +15,13 @@ class Common():
         skillx=[0.08,0.136,0.19,0.282,0.338,0.398,0.482,0.54,0.6]
         skilly=0.78
 
-        c.click(skillx[skill-1], skilly)
+        c.click(skillx[int(skill)-1], skilly)
         time.sleep(0.5)
         # 选目标
         aimx=[0,0.3,0.5,0.7]
         aimy=0.62
-        if aim!=0:
-            c.click(aimx[aim], aimy)
+        if int(aim)!=0:
+            c.click(aimx[int(aim)], aimy)
         # 加速
         Common.quick(c)
 
@@ -42,21 +42,21 @@ class Common():
         treay=0.243
         cardx=[0.17,0.34,0.5,0.66,0.83]
         cardy=0.656
-        if one<0:
-            c.click(treax[one*-1-1],treay)
+        if int(one)<0:
+            c.click(treax[int(one)*-1-1],treay)
         else:
-            c.click(cardx[one-1],cardy)
+            c.click(cardx[int(one)-1],cardy)
         time.sleep(0.3)
-        if two<0:
-            c.click(treax[two*-1-1],treay)
+        if int(two)<0:
+            c.click(treax[int(two)*-1-1],treay)
         else:
-            c.click(cardx[two-1],cardy)
+            c.click(cardx[int(two)-1],cardy)
         time.sleep(0.3)
-        if three<0:
-            c.click(treax[three*-1-1],treay)
+        if int(three)<0:
+            c.click(treax[int(three)*-1-1],treay)
         else:
-            c.click(cardx[three-1],cardy)
-        for x in range(wait):
+            c.click(cardx[int(three)-1],cardy)
+        for x in range(int(wait)):
             Common.quick(c)
 
     #非最终回合回合出卡
@@ -69,20 +69,20 @@ class Common():
         treay=0.243
         cardx=[0.17,0.34,0.5,0.66,0.83]
         cardy=0.656
-        if one<0:
-            c.click(treax[one*-1-1],treay)
+        if int(one)<0:
+            c.click(treax[int(one)*-1-1],treay)
         else:
-            c.click(cardx[one-1],cardy)
+            c.click(cardx[int(one)-1],cardy)
         time.sleep(0.3)
-        if two<0:
-            c.click(treax[two*-1-1],treay)
+        if int(two)<0:
+            c.click(treax[int(two)*-1-1],treay)
         else:
-            c.click(cardx[two-1],cardy)
+            c.click(cardx[int(two)-1],cardy)
         time.sleep(0.3)
-        if three<0:
-            c.click(treax[three*-1-1],treay)
+        if int(three)<0:
+            c.click(treax[int(three)*-1-1],treay)
         else:
-            c.click(cardx[three-1],cardy)
+            c.click(cardx[int(three)-1],cardy)
         for x in range(10):
             Common.quick(c)
         #等待至下一回合开始
@@ -107,9 +107,9 @@ class Common():
         #换人界面
         teamx=[0.17,0.3,0.43,0.56,0.69,0.82]
         teamy=0.5
-        c.click(teamx[a-1], teamy)
+        c.click(teamx[int(a)-1], teamy)
         time.sleep(0.3)
-        c.click(teamx[b-1], teamy)
+        c.click(teamx[int(b)-1], teamy)
         time.sleep(0.5)
         c.click(0.498, 0.878)
         Common.quick(c)
@@ -123,13 +123,13 @@ class Common():
         #技能
         suitx=[0.72,0.775,0.83]
         suity=0.434
-        c.click(suitx[skill-1],suity)
+        c.click(suitx[int(skill)-1],suity)
         time.sleep(0.5)
         # 选目标
         aimx=[0,0.3,0.5,0.7]
         aimy=0.62
         if aim!=0:
-            c.click(aimx[aim], aimy)
+            c.click(aimx[int(aim)], aimy)
         # 加速
         Common.quick(c)
 
