@@ -19,25 +19,39 @@ def turnEndTest(c):
         Common.end(c)
         return True
 
+
 class JsonToAuto():
 
-    # 公伽奥
-    def read(c,jsonString):
-        actionJson=json.loads(jsonString);
+    def read(c, jsonString, times):
+        actionJson = json.loads(jsonString);
         for name in actionJson:
-            if(name=="start"):
-                JsonToAuto.readStart(c,actionJson[name]);
-            if(name=="end"):
-                JsonToAuto.readEnd(c,actionJson[name]);
-            if("turn" in name):
-                JsonToAuto.readTurn(c,actionJson[name],name);
+            if (name == "start"):
+                JsonToAuto.readStart(c, actionJson[name], times);
+            if (name == "end"):
+                JsonToAuto.readEnd(c, actionJson[name]);
+            if ("turn" in name):
+                JsonToAuto.readTurn(c, actionJson[name], name);
 
-    def readStart(c,actions):
+    def readStart(c, actions, times):
         for action in actions:
-            if(action=="eatApple"):
+            if (action == "eatApple"):
+                if (times == 0):
+                    continue
                 Common.eatApple(c)
-            if(action=="choose"):
+                continue
+            if (action == "choose"):
                 Common.choose(c)
+                continue
+            if (action["action"] == "eatApple"):
+                if (times == 0):
+                    continue
+                Common.eatApple(c)
+                continue
+            if (action["action"] == "choose"):
+                Common.choose(c)
+                continue
+            if (action["action"] == "friend"):
+                Common.friend(c, action["serClass"], action["serName"])
 
     def readEnd(c, actions):
         Common.waitResult()
@@ -45,11 +59,11 @@ class JsonToAuto():
         Common.end(c)
 
     def readTurn(c, actions, name):
-        if(name=="turn2" or name =="turn3"):
+        if (name == "turn2" or name == "turn3"):
             turnEndTest(c);
         print(actions)
         for action in actions:
-            if(action['action']=="skill"):
+            if (action['action'] == "skill"):
                 Common.skill(c, action["skill"], action["aim"])
             if (action['action'] == "suitSkill"):
                 Common.suitSkill(c, action["skill"], action["aim"])
@@ -62,13 +76,9 @@ class JsonToAuto():
 
 
 if __name__ == '__main__':
-    c=wda.Client('http://localhost:8100')
-    url = 'http://116.62.220.225:8080/api/getFgoAuto'
-    respose = requests.get(url=url)
-    print(respose.text)
-    for x in range(10):
-        start = time.perf_counter()
-        logger.info("开始第 " + str(x + 1) + " 次")
-        JsonToAuto.read(c,respose.text);
-        end = time.perf_counter()
-        logger.info("第 " + str(x + 1) + " 次,耗时 " + str(round(end - start)) + ' seconds')
+    c = wda.Client('http://localhost:8100')
+    # 友情池
+    for x in range(1000):
+        logger.info(x)
+        time.sleep(0.5)
+        c.click(0.375, 0.575)

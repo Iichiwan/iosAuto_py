@@ -29,5 +29,17 @@ class Airtest():
             return True
         return False
 
+    def SerAssKeyang():
+        auto_setup(__file__, devices=["iOS:///http://127.0.0.1:8100"])
+        if exists(Template(r"pics/tpl1668012867694.png", record_pos=(0.184, -0.018), resolution=(2436, 1125))):
+            logging.info("find AssKeyang")
+            return True
+        return False
+
+    def SelectAssKeyang():
+        auto_setup(__file__, devices=["iOS:///http://127.0.0.1:8100"])
+        touch(Template(r"pics/tpl1668012867694.png",record_pos=(0.184, -0.018), resolution=(2436, 1125)))
+
+
 if __name__ == '__main__':
     Airtest.AttackExist();
