@@ -93,6 +93,47 @@ class Common():
             if Airtest.ResultExist():
                 break
 
+    def cardV2(c, one, two, three, lastTurn, aim):
+        aimx = [0.08, 0.24, 0.4]
+        aimy = 0.07
+        # 制定目标
+        if (int(aim) != 0):
+            c.click(aimx[int(aim) - 1], aimy)
+            time.sleep(0.5)
+            c.click(0.56, aimy)
+            time.sleep(0.5)
+        # 宝具-1~-3
+        # 指令卡1~5
+        c.click(0.85, 0.843)
+        time.sleep(0.5)
+        treax = [0.35, 0.5, 0.65]
+        treay = 0.243
+        cardx = [0.17, 0.34, 0.5, 0.66, 0.83]
+        cardy = 0.656
+        if int(one) < 0:
+            c.click(treax[int(one) * -1 - 1], treay)
+        else:
+            c.click(cardx[int(one) - 1], cardy)
+        time.sleep(0.3)
+        if int(two) < 0:
+            c.click(treax[int(two) * -1 - 1], treay)
+        else:
+            c.click(cardx[int(two) - 1], cardy)
+        time.sleep(0.3)
+        if int(three) < 0:
+            c.click(treax[int(three) * -1 - 1], treay)
+        else:
+            c.click(cardx[int(three) - 1], cardy)
+        for x in range(10):
+            Common.quick(c)
+        if (int(lastTurn) == 0):
+            # 等待至下一回合开始
+            for x in range(10):
+                if Airtest.AttackExist():
+                    break
+                if Airtest.ResultExist():
+                    break
+
     # 等待结果
     def waitResult():
         for x in range(10):
@@ -155,6 +196,8 @@ class Common():
     # 选人等待进战
     def choose(c):
         c.click(0.528, 0.447)
+        time.sleep(1)
+        c.click(0.9, 0.9)
         # 等待至下一回合开始
         for x in range(10):
             if Airtest.AttackExist():
@@ -197,6 +240,30 @@ class Common():
                         if Airtest.AttackExist():
                             break
                     return True
+            if (serName == "奥宝"):
+                # 选择助战杀狐
+                if Airtest.SerABL():
+                    Airtest.SelectABL()
+                    logger.info("选择助战奥宝")
+                    time.sleep(0.5)
+                    c.click(0.9, 0.9)
+                    # 等待至下一回合开始
+                    for x in range(10):
+                        if Airtest.AttackExist():
+                            break
+                    return True
+            if (serName == "5宝奥宝"):
+                # 选择助战杀狐
+                if Airtest.SerABL5():
+                    Airtest.SelectABL5()
+                    logger.info("选择助战奥宝")
+                    time.sleep(0.5)
+                    c.click(0.9, 0.9)
+                    # 等待至下一回合开始
+                    for x in range(10):
+                        if Airtest.AttackExist():
+                            break
+                    return True
             # 刷新助战
             logger.info("刷新助战")
             c.click(0.65, 0.19)
@@ -208,4 +275,5 @@ class Common():
 if __name__ == '__main__':
     c = wda.Client('http://localhost:8100')
     # 友情池
-    c.click(0.528, 0.447)
+    # c.click(0.528, 0.447)
+    Common.friend(c, 9, "5宝奥宝")

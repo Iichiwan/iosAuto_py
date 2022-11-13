@@ -73,6 +73,8 @@ class JsonToAuto():
                 Common.suitChange(c, action["a"], action["b"])
             if (action['action'] == "card"):
                 Common.card(c, action["one"], action["two"], action["three"], action["wait"])
+            if (action['action'] == "cardV2"):
+                Common.cardV2(c, action["one"], action["two"], action["three"], action["lastTurn"], action["aim"])
 
 
 if __name__ == '__main__':

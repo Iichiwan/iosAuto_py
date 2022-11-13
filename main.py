@@ -21,7 +21,7 @@ def print_hi(name):
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     # 替换此处id为脚本对应id
-    id = "26";
+    id = "28";
     c = wda.Client('http://localhost:8100')
     url = 'http://116.62.220.225:8080/api/getFgoAuto?id=' + id;
     respose = requests.get(url=url)
@@ -31,4 +31,10 @@ if __name__ == '__main__':
         logger.info("开始第 " + str(x + 1) + " 次")
         JsonToAuto.read(c, respose.text, x);
         end = time.perf_counter()
-        logger.info("=======================================================第 " + str(x + 1) + " 次,耗时 " + str(round(end - start)) + ' seconds=======================================================')
+        logger.info("***");
+        logger.info("***");
+        logger.info("***");
+        logger.info("==============================================================================================================第 " + str(x + 1) + " 次,耗时 " + str(round(end - start)) + ' seconds==============================================================================================================')
+        logger.info("***");
+        logger.info("***");
+        logger.info("***");
