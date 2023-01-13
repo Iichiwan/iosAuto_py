@@ -1,4 +1,5 @@
 import logging
+import sys
 
 from airtest.core.api import *
 
@@ -42,6 +43,7 @@ class Airtest():
         touch(Template(r"pics/tpl1668012867694.png", record_pos=(0.184, -0.018), resolution=(2436, 1125)))
 
     def SerABL():
+        sys.setrecursionlimit(1000000)
         auto_setup(__file__, devices=["iOS:///http://127.0.0.1:8100"])
         if exists(
                 Template(r"pics/tpl1668248182803.png", rgb=True, record_pos=(0.181, -0.017), resolution=(2436, 1125),
