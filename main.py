@@ -4,10 +4,9 @@ import time
 import wda
 import requests
 
-from script import ScriptDemo
 from logzero import logger
 from JsonToAuto import JsonToAuto
-
+from airtest.core.api import *
 
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
@@ -21,12 +20,13 @@ def print_hi(name):
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     # 替换此处id为脚本对应id
-    id = "30";
+    id = "38";
     c = wda.Client('http://localhost:8100')
+    auto_setup(__file__, devices=["iOS:///http://127.0.0.1:8100"])
     url = 'http://116.62.220.225:8080/api/getFgoAuto?id=' + id;
     respose = requests.get(url=url)
     print(respose.text)
-    for x in range(4):
+    for x in range(9):
         start = time.perf_counter()
         logger.info("开始第 " + str(x + 1) + " 次")
         JsonToAuto.read(c, respose.text, x);

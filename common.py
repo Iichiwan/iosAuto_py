@@ -136,7 +136,7 @@ class Common():
 
     # 等待结果
     def waitResult():
-        for x in range(10):
+        for x in range(1):
             if Airtest.ResultExist():
                 break
 
@@ -264,6 +264,18 @@ class Common():
                         if Airtest.AttackExist():
                             break
                     return True
+            if (serName == "c呆"):
+                # 选择助战杀狐
+                if Airtest.SerCaber():
+                    Airtest.SelectCaber()
+                    logger.info("选择助战c呆")
+                    time.sleep(0.5)
+                    c.click(0.9, 0.9)
+                    # 等待至下一回合开始
+                    for x in range(10):
+                        if Airtest.AttackExist():
+                            break
+                    return True
             # 刷新助战
             logger.info("刷新助战")
             c.click(0.65, 0.19)
@@ -274,6 +286,8 @@ class Common():
 
 if __name__ == '__main__':
     c = wda.Client('http://localhost:8100')
-    # 友情池
-    # c.click(0.528, 0.447)
-    Common.friend(c, 9, "5宝奥宝")
+    # 无限池
+    for x in range(1000):
+        logger.info(x)
+        time.sleep(0.5)
+        c.click(0.375, 0.575)
