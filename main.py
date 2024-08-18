@@ -22,7 +22,7 @@ if __name__ == '__main__':
     # 替换此处id为脚本对应id
     id = "38";
     c = wda.Client('http://localhost:8100')
-    auto_setup(__file__, devices=["iOS:///http://127.0.0.1:8100"])
+    auto_setup(__file__, devices=["iOS:///http://localhost:8100"])
     url = 'http://116.62.220.225:8080/api/getFgoAuto?id=' + id;
     respose = requests.get(url=url)
     print(respose.text)
