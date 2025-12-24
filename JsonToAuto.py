@@ -14,7 +14,7 @@ wda.DEVICE_WAIT_TIMEOUT = 180.0
 
 def turnEndTest(c):
     if Airtest.ResultExist():
-        Common.waitResult()
+        # Common.waitResult()
         logger.info("end")
         Common.end(c)
         return True
@@ -54,14 +54,17 @@ class JsonToAuto():
                 Common.friend(c, action["serClass"], action["serName"])
 
     def readEnd(c, actions):
-        Common.waitResult()
+        # Common.waitResult()
         logger.info("end")
         Common.end(c)
 
     def readTurn(c, actions, name):
         if (name == "turn2" or name == "turn3"):
-            turnEndTest(c);
+            if (actions != []):
+                turnEndTest(c)
         print(actions)
+        if (name == "turn1" or name == "turn3"):
+            time.sleep(5)
         for action in actions:
             if (action['action'] == "skill"):
                 Common.skill(c, action["skill"], action["aim"])

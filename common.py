@@ -21,17 +21,19 @@ class Common():
         # 选目标
         aimx = [0, 0.3, 0.5, 0.7]
         aimy = 0.62
-        if int(aim) != 0:
+        if int(aim) == 4:
+            c.click(0.5, 0.6)
+        elif int(aim) != 0:
             c.click(aimx[int(aim)], aimy)
         # 加速
         Common.quick(c)
 
     def quick(c):
-        c.click(0.088, 0.391)
-        c.click(0.088, 0.391)
+        c.click(0.95, 0.95)
+        c.click(0.95, 0.95)
         time.sleep(0.5)
-        c.click(0.088, 0.391)
-        c.click(0.088, 0.391)
+        c.click(0.95, 0.95)
+        c.click(0.95, 0.95)
         time.sleep(0.5)
 
     def card(c, one, two, three, wait):
@@ -124,8 +126,12 @@ class Common():
             c.click(treax[int(three) * -1 - 1], treay)
         else:
             c.click(cardx[int(three) - 1], cardy)
-        for x in range(10):
-            Common.quick(c)
+        if int(two) < 0 or int(three) < 0:  # 两张及以上宝具卡
+            for x in range(20):
+                Common.quick(c)
+        else:
+            for x in range(10):
+                Common.quick(c)
         if (int(lastTurn) == 0):
             # 等待至下一回合开始
             for x in range(10):
@@ -133,6 +139,9 @@ class Common():
                     break
                 if Airtest.ResultExist():
                     break
+        else:
+            for x in range(5):
+                Common.quick(c)
 
     # 等待结果
     def waitResult():
@@ -170,7 +179,7 @@ class Common():
         # 选目标
         aimx = [0, 0.3, 0.5, 0.7]
         aimy = 0.62
-        if aim != 0:
+        if aim != '0':
             c.click(aimx[int(aim)], aimy)
         # 加速
         Common.quick(c)
@@ -182,7 +191,8 @@ class Common():
         time.sleep(0.5)
         c.click(0.802, 0.891)
         time.sleep(0.5)
-        c.click(0.294, 0.852)
+        # 点掉助战
+        c.click(0.294, 0.9)
         time.sleep(0.5)
         c.click(0.628, 0.786)
 
@@ -195,11 +205,14 @@ class Common():
 
     # 选人等待进战
     def choose(c):
+        time.sleep(5)
         c.click(0.528, 0.447)
         time.sleep(1)
         c.click(0.9, 0.9)
         # 等待至下一回合开始
         for x in range(10):
+            if Airtest.AttackExist():
+                break
             if Airtest.AttackExist():
                 break
 
@@ -290,4 +303,10 @@ if __name__ == '__main__':
     for x in range(1000):
         logger.info(x)
         time.sleep(0.5)
+        # 无限池
         c.click(0.375, 0.575)
+        c.click(0.375, 0.575, 5)
+        # 友情池
+        # c.click(0.6, 0.9)
+        # time.sleep(0.5)
+        # c.click(0.65, 0.8)
