@@ -17,7 +17,7 @@ class Common():
         skilly = 0.78
 
         c.click(skillx[int(skill) - 1], skilly)
-        time.sleep(0.5)
+        time.sleep(0.2)
         # 选目标
         aimx = [0, 0.3, 0.5, 0.7]
         aimy = 0.62
@@ -135,6 +135,7 @@ class Common():
         if (int(lastTurn) == 0):
             # 等待至下一回合开始
             for x in range(10):
+                Common.quick(c)
                 if Airtest.AttackExist():
                     break
                 if Airtest.ResultExist():
@@ -211,6 +212,7 @@ class Common():
         c.click(0.9, 0.9)
         # 等待至下一回合开始
         for x in range(10):
+            Common.quick(c)
             if Airtest.AttackExist():
                 break
             if Airtest.AttackExist():
